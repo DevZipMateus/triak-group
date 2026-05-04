@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitrine — Triak Group</title>
+  <meta name="description" content="Vitrine de produtos Triak Group — sensores eletrônicos, chicotes elétricos e equipamentos para tacógrafos.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Sem scroll na página — o iframe ocupa tudo */
+    html, body {
+      overflow: hidden;
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background: #060D2E;
+    }
+
+    :root {
+      --navy-dark: #060D2E;
+      --navy: #0D2060;
+      --navy-light: #1A3478;
+      --gold: #C9A84C;
+      --gold-dark: #A07830;
+      --white: #FFFFFF;
+      --header-h: 80px;
+      --badge-h: 63px;
+      --transition: 0.3s ease;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: rgba(6,13,46,0.98);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 46px; width: auto; }
+
+    /* Nav desktop */
+    .nav-group { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      padding: 8px 13px;
+      border-radius: 6px;
+      transition: var(--transition);
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .nav-link:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
+    .nav-link-vitrine {
+      color: var(--gold) !important;
+      border: 1px solid rgba(201,168,76,0.45);
+    }
+    .nav-link-vitrine:hover { background: rgba(201,168,76,0.15) !important; border-color: var(--gold); }
+    .nav-link-active {
+      color: var(--gold) !important;
+      background: rgba(201,168,76,0.12) !important;
+    }
+
+    /* Título da página no header */
+    .page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 20px;
+      border-left: 1px solid rgba(255,255,255,0.12);
+      padding-left: 20px;
+    }
+    .page-title span { color: var(--gold); }
+
+    /* Botões de idioma */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 3px;
+      margin-left: 18px;
+    }
+    .lang-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      padding: 4px 11px;
+      border-radius: 16px;
+      transition: var(--transition);
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--navy-dark); }
+    .lang-btn:hover:not(.active) { color: var(--white); }
+
+    /* Menu mobile toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 23px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* Mobile nav */
+    nav#navMenu {
+      display: none;
+      position: fixed;
+      top: var(--header-h);
+      left: 0; right: 0;
+      background: var(--navy-dark);
+      padding: 12px 20px 20px;
+      z-index: 998;
+      border-top: 1px solid rgba(201,168,76,0.18);
+      flex-direction: column;
+      gap: 2px;
+    }
+    nav#navMenu.open { display: flex; }
+    nav#navMenu .nav-link { font-size: 0.95rem; padding: 11px 14px; width: 100%; }
+    .lang-toggle-mobile {
+      display: flex;
+      gap: 8px;
+      padding: 14px 14px 2px;
+      margin-top: 4px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .lang-toggle-mobile .lang-btn {
+      font-size: 0.82rem;
+      padding: 6px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      color: rgba(255,255,255,0.6);
+    }
+    .lang-toggle-mobile .lang-btn.active { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); }
+
+    /* ===== IFRAME WRAPPER ===== */
+    /* Ocupa exatamente: 100vh - header(80px) - badge MonteSite(63px) */
+    .iframe-wrapper {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      height: calc(100vh - var(--header-h) - var(--badge-h));
+    }
+    .iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ===== BADGE MONTESITE ===== */
+    #montesite-footer-badge {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 1023px) {
+      .nav-group { display: none; }
+      .menu-toggle { display: flex; }
+      .page-title { display: none; }
+    }
+    @media (max-width: 479px) {
+      .header-inner { padding: 0 16px; }
+      .logo img { height: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;">
+        <a href="index.html" class="logo" aria-label="Triak Group — voltar ao site">
+          <img src="images/logo.png" alt="Triak Group">
+        </a>
+        <span class="page-title" data-pt="<span>Vitrine</span> online" data-en="Online <span>Showcase</span>"><span>Vitrine</span> online</span>
+      </div>
+
+      <!-- Desktop nav -->
+      <div class="nav-group" role="navigation" aria-label="Navegação principal">
+        <a href="index.html#inicio"   class="nav-link" data-pt="Início"   data-en="Home">Início</a>
+        <a href="index.html#sobre"    class="nav-link" data-pt="Sobre"    data-en="About">Sobre</a>
+        <a href="index.html#produtos" class="nav-link" data-pt="Produtos" data-en="Products">Produtos</a>
+        <a href="index.html#servicos" class="nav-link" data-pt="Serviços" data-en="Services">Serviços</a>
+        <a href="index.html#contato"  class="nav-link" data-pt="Contato"  data-en="Contact">Contato</a>
+        <a href="vitrine.html" class="nav-link nav-link-vitrine nav-link-active" data-pt="Vitrine" data-en="Showcase">Vitrine</a>
+
+        <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+          <button class="lang-btn" id="btnPT" onclick="setLang('pt')" aria-label="Português">PT</button>
+          <button class="lang-btn" id="btnEN" onclick="setLang('en')" aria-label="English">EN</button>
+        </div>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MENU MOBILE -->
+  <nav id="navMenu" aria-label="Menu mobile">
+    <a href="index.html#inicio"   class="nav-link" onclick="closeMenu()" data-pt="Início"   data-en="Home">Início</a>
+    <a href="index.html#sobre"    class="nav-link" onclick="closeMenu()" data-pt="Sobre"    data-en="About">Sobre</a>
+    <a href="index.html#produtos" class="nav-link" onclick="closeMenu()" data-pt="Produtos" data-en="Products">Produtos</a>
+    <a href="index.html#servicos" class="nav-link" onclick="closeMenu()" data-pt="Serviços" data-en="Services">Serviços</a>
+    <a href="index.html#contato"  class="nav-link" onclick="closeMenu()" data-pt="Contato"  data-en="Contact">Contato</a>
+    <a href="vitrine.html" class="nav-link nav-link-vitrine nav-link-active" onclick="closeMenu()" data-pt="Vitrine" data-en="Showcase">Vitrine</a>
+    <div class="lang-toggle-mobile">
+      <button class="lang-btn" id="btnPTm" onclick="setLang('pt')" aria-label="Português">PT</button>
+      <button class="lang-btn" id="btnENm" onclick="setLang('en')" aria-label="English">EN</button>
+    </div>
+  </nav>
+
+  <!-- IFRAME — ocupa 100vh - 80px header - 63px badge -->
+  <div class="iframe-wrapper" id="iframeWrapper">
+    <iframe
+      src="https://triakco.egestor.com.br/vitrine/"
+      title="Vitrine Triak Group"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- Rodapé MonteSite (badge fixo no bottom) -->
+  <div id="montesite-footer-badge"></div>
+  <script src="https://vaabpicspdbolvutnscp.supabase.co/functions/v1/get-footer-iframe"></script>
+
+  <script>
+    /* ===== IDIOMA ===== */
+    let lang = localStorage.getItem('triakLang') || 'pt';
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('triakLang', l);
+      document.querySelectorAll('[data-pt]').forEach(el => {
+        const val = l === 'pt' ? el.getAttribute('data-pt') : el.getAttribute('data-en');
+        if (!val) return;
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = val;
+        } else if (val.includes('<')) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      });
+      ['btnPT','btnPTm'].forEach(id => { const b = document.getElementById(id); if (b) b.classList.toggle('active', l === 'pt'); });
+      ['btnEN','btnENm'].forEach(id => { const b = document.getElementById(id); if (b) b.classList.toggle('active', l === 'en'); });
+      document.documentElement.lang = l === 'pt' ? 'pt-BR' : 'en';
+    }
+
+    setLang(lang);
+
+    /* ===== MENU MOBILE ===== */
+    const toggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    toggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    function closeMenu() {
+      navMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    /* ===== RESIZE DINÂMICO DO IFRAME ===== */
+    /* Fórmula: altura = window.innerHeight - 80px (header) - 63px (badge) */
+    const wrapper = document.getElementById('iframeWrapper');
+
+    function resizeIframe() {
+      const h = window.innerHeight - 80 - 63;
+      wrapper.style.height = Math.max(h, 200) + 'px';
+    }
+
+    window.addEventListener('resize', resizeIframe, { passive: true });
+    resizeIframe();
+  </script>
+</body>
+</html>

@@ -169,6 +169,12 @@
       letter-spacing: 0.2px;
     }
     .nav-link:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
+    .nav-link-vitrine {
+      color: var(--gold) !important;
+      border: 1px solid rgba(201,168,76,0.45);
+      padding: 7px 14px;
+    }
+    .nav-link-vitrine:hover { background: rgba(201,168,76,0.15) !important; border-color: var(--gold); }
 
     /* Botões de idioma */
     .lang-toggle {
@@ -599,6 +605,73 @@
       margin-bottom: 12px;
     }
     .product-desc { color: var(--gray-600); font-size: 0.9rem; line-height: 1.72; }
+    /* Banner vitrine na seção de produtos */
+    .vitrine-banner {
+      margin-top: 52px;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 60%, var(--navy-light) 100%);
+      border-radius: var(--radius);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 52px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+    }
+    .vitrine-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+    .vitrine-banner-glow {
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .vitrine-banner-content { position: relative; z-index: 1; flex: 1; }
+    .vitrine-banner-content .section-tag { margin-left: 0; margin-bottom: 16px; }
+    .vitrine-banner-title {
+      font-family: var(--font-h);
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .vitrine-banner-title span { color: var(--gold); }
+    .vitrine-banner-desc {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+    .vitrine-banner-cta { position: relative; z-index: 1; flex-shrink: 0; }
+    .btn-vitrine {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 16px 32px;
+      border-radius: 8px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-vitrine:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
+    .btn-vitrine svg { width: 18px; height: 18px; fill: currentColor; }
+
     .product-tag {
       display: inline-block;
       margin-top: 18px;
@@ -864,6 +937,8 @@
       .contact-map { height: 320px; }
       .services-card { flex-direction: column; gap: 26px; text-align: center; align-items: center; }
       .hero-visual { display: none; }
+      .vitrine-banner { flex-direction: column; text-align: center; padding: 40px 32px; }
+      .vitrine-banner-content .section-tag { margin: 0 auto 16px; }
     }
 
     /* Tablet portrait */
@@ -918,6 +993,7 @@
         <a href="#produtos" class="nav-link" data-pt="Produtos" data-en="Products">Produtos</a>
         <a href="#servicos" class="nav-link" data-pt="Serviços" data-en="Services">Serviços</a>
         <a href="#contato" class="nav-link" data-pt="Contato" data-en="Contact">Contato</a>
+        <a href="vitrine.html" class="nav-link nav-link-vitrine" data-pt="Vitrine" data-en="Showcase">Vitrine</a>
 
         <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
           <button class="lang-btn" id="btnPT"  onclick="setLang('pt')" aria-label="Português">PT</button>
@@ -939,6 +1015,7 @@
     <a href="#produtos" class="nav-link" onclick="closeMenu()" data-pt="Produtos" data-en="Products">Produtos</a>
     <a href="#servicos" class="nav-link" onclick="closeMenu()" data-pt="Serviços" data-en="Services">Serviços</a>
     <a href="#contato"  class="nav-link" onclick="closeMenu()" data-pt="Contato"  data-en="Contact">Contato</a>
+    <a href="vitrine.html" class="nav-link nav-link-vitrine" onclick="closeMenu()" data-pt="Vitrine" data-en="Showcase">Vitrine</a>
     <div class="lang-toggle-mobile">
       <button class="lang-btn" id="btnPTm" onclick="setLang('pt')" aria-label="Português">PT</button>
       <button class="lang-btn" id="btnENm" onclick="setLang('en')" aria-label="English">EN</button>
@@ -981,6 +1058,7 @@
         <div class="hero-cta">
           <a href="#produtos" class="btn-primary" data-pt="Nossos produtos" data-en="Our products">Nossos produtos</a>
           <a href="#contato"  class="btn-outline"  data-pt="Fale conosco"   data-en="Contact us">Fale conosco</a>
+          <a href="vitrine.html" class="btn-outline" style="border-color:rgba(201,168,76,0.6);color:var(--gold);" data-pt="Acessar vitrine" data-en="View showcase">Acessar vitrine</a>
         </div>
       </div>
     </div>
@@ -1132,6 +1210,29 @@
         </div>
 
       </div>
+
+      <!-- Banner vitrine -->
+      <div class="vitrine-banner reveal">
+        <div class="vitrine-banner-glow" aria-hidden="true"></div>
+        <div class="vitrine-banner-content">
+          <span class="section-tag" data-pt="Loja online" data-en="Online store">Loja online</span>
+          <h3 class="vitrine-banner-title" data-pt="Explore nossa <span>vitrine completa</span>" data-en="Explore our <span>full showcase</span>">Explore nossa <span>vitrine completa</span></h3>
+          <p class="vitrine-banner-desc" data-pt="Acesse o catálogo completo de produtos diretamente na nossa vitrine online. Consulte disponibilidade, especificações técnicas e solicite seu pedido com praticidade — tudo em um só lugar." data-en="Access our complete product catalog directly in our online showcase. Check availability, technical specifications and place your order conveniently — all in one place.">Acesse o catálogo completo de produtos diretamente na nossa vitrine online. Consulte disponibilidade, especificações técnicas e solicite seu pedido com praticidade — tudo em um só lugar.</p>
+          <a href="vitrine.html" class="btn-vitrine" data-pt="Acessar vitrine agora" data-en="View showcase now">
+            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            <span data-pt="Acessar vitrine agora" data-en="View showcase now">Acessar vitrine agora</span>
+          </a>
+        </div>
+        <div class="vitrine-banner-cta" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.15;">
+            <circle cx="60" cy="60" r="55" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="8 5"/>
+            <circle cx="60" cy="60" r="35" stroke="#C9A84C" stroke-width="1" stroke-dasharray="5 4"/>
+            <circle cx="60" cy="60" r="15" fill="#C9A84C"/>
+            <path d="M50 60l8 8 12-16" stroke="#060D2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
     </div>
   </section>
 
