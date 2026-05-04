@@ -252,9 +252,9 @@
       min-height: 100vh;
       padding-top: var(--header-h);
       background:
-        linear-gradient(135deg, rgba(6,13,46,0.97) 0%, rgba(13,32,96,0.93) 45%, rgba(26,52,120,0.9) 100%),
-        linear-gradient(135deg, #060D2E 0%, #0D2060 50%, #1A3478 100%);
-      background-attachment: fixed;
+        linear-gradient(135deg, rgba(6,13,46,0.91) 0%, rgba(13,32,96,0.85) 45%, rgba(26,52,120,0.82) 100%),
+        url('images/3ced3a1c6941b79479a812e124d648e4.jpg') center / cover no-repeat;
+      background-attachment: fixed, fixed;
       display: flex;
       align-items: center;
       position: relative;
@@ -413,7 +413,11 @@
     }
 
     /* ===== SOBRE ===== */
-    .about { background: var(--gray-50); }
+    .about {
+      background:
+        linear-gradient(rgba(248,249,252,0.95), rgba(248,249,252,0.95)),
+        url('images/9538218a8bbf2c29dbff19a15a046277.jpg') center / cover no-repeat;
+    }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -501,7 +505,11 @@
     }
 
     /* ===== MVV ===== */
-    .mvv { background: var(--white); }
+    .mvv {
+      background:
+        linear-gradient(rgba(255,255,255,0.91), rgba(255,255,255,0.91)),
+        url('images/ccc144e6a2a7ba76da92b579a23338ea.jpg') center / cover no-repeat;
+    }
     .mvv-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -550,7 +558,11 @@
     .mvv-text { color: var(--gray-600); font-size: 0.93rem; line-height: 1.75; }
 
     /* ===== PRODUTOS ===== */
-    .products { background: var(--gray-50); }
+    .products {
+      background:
+        linear-gradient(rgba(248,249,252,0.91), rgba(248,249,252,0.91)),
+        url('images/dda81f06921c998e64d8db6396ae0d90.jpg') center / cover no-repeat;
+    }
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -603,7 +615,9 @@
 
     /* ===== SERVIÇOS ===== */
     .services {
-      background: var(--navy-mid);
+      background:
+        linear-gradient(rgba(6,13,46,0.87), rgba(6,13,46,0.87)),
+        url('images/84cac9b0ffafa7b1893d9fd883940207.jpg') center / cover no-repeat;
       position: relative;
     }
     .services-glow-a {
@@ -676,7 +690,11 @@
     }
 
     /* ===== CONTATO ===== */
-    .contact { background: var(--gray-50); }
+    .contact {
+      background:
+        linear-gradient(rgba(248,249,252,0.93), rgba(248,249,252,0.93)),
+        url('images/8faa95f2b2618ca05d4362677be78ea3.jpg') center / cover no-repeat;
+    }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.3fr;
@@ -835,7 +853,7 @@
 
     /* Tablet / 1024px e abaixo */
     @media (max-width: 1023px) {
-      .hero { background-attachment: scroll; }
+      .hero { background-attachment: scroll, scroll; }
       .nav-group { display: none; }
       .menu-toggle { display: flex; }
       .about-grid { grid-template-columns: 1fr; }
