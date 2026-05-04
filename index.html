@@ -316,13 +316,27 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-    .hero-logo {
-      display: block;
-      height: 90px;
-      width: auto;
-      margin: 20px 0 8px;
-      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(201,168,76,0.35));
+    /* Layout interno da hero: texto | logo */
+    .hero .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      width: 100%;
+    }
+    .hero-content { flex: 1; }
+    .hero-logo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
       animation: slideUp 0.8s ease 0.65s both;
+    }
+    .hero-logo {
+      height: 220px;
+      width: auto;
+      filter: brightness(0) invert(1) drop-shadow(0 4px 40px rgba(201,168,76,0.45));
     }
     .hero h1 {
       font-family: var(--font-h);
@@ -952,6 +966,8 @@
 
       /* Hero */
       .hero-visual { display: none; }
+      .hero-logo-wrap { display: none; }
+      .hero .container { display: block; }
       .hero-content { max-width: 640px; }
 
       /* Sobre */
@@ -1347,8 +1363,6 @@
           <span data-pt="Indústria automotiva · Rio de Janeiro · Desde 2014" data-en="Automotive industry · Rio de Janeiro · Since 2014">Indústria automotiva · Rio de Janeiro · Desde 2014</span>
         </div>
 
-        <img src="images/logo.png" alt="Triak Group" class="hero-logo">
-
         <h1>Triak<span class="gold"> Group</span></h1>
 
         <h2 data-pt="Excelência em eletrônica automotiva" data-en="Excellence in automotive electronics">Excelência em eletrônica automotiva</h2>
@@ -1362,6 +1376,10 @@
           <a href="#contato"  class="btn-outline"  data-pt="Fale conosco"   data-en="Contact us">Fale conosco</a>
           <a href="vitrine.html" class="btn-outline" style="border-color:rgba(201,168,76,0.6);color:var(--gold);" data-pt="Acessar vitrine" data-en="View showcase">Acessar vitrine</a>
         </div>
+      </div>
+
+      <div class="hero-logo-wrap">
+        <img src="images/logo.png" alt="Triak Group" class="hero-logo">
       </div>
     </div>
   </section>
