@@ -155,7 +155,7 @@
       padding: 0 24px;
     }
     .logo { display: flex; align-items: center; }
-    .logo img { height: 46px; width: auto; }
+    .logo img { height: 58px; width: auto; }
 
     .nav-group { display: flex; align-items: center; gap: 4px; }
     .nav-link {
@@ -315,6 +315,14 @@
       color: var(--gold);
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+    .hero-logo {
+      display: block;
+      height: 90px;
+      width: auto;
+      margin: 20px 0 8px;
+      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(201,168,76,0.35));
+      animation: slideUp 0.8s ease 0.65s both;
     }
     .hero h1 {
       font-family: var(--font-h);
@@ -1028,7 +1036,8 @@
     @media (max-width: 479px) {
       .container { padding: 0 16px; }
       .header-inner { padding: 0 16px; }
-      .logo img { height: 38px; }
+      .logo img { height: 44px; }
+      .hero-logo { height: 64px; }
       .section { padding: 56px 0; }
 
       /* Hero */
@@ -1337,6 +1346,8 @@
           <span class="hero-badge-dot"></span>
           <span data-pt="Indústria automotiva · Rio de Janeiro · Desde 2014" data-en="Automotive industry · Rio de Janeiro · Since 2014">Indústria automotiva · Rio de Janeiro · Desde 2014</span>
         </div>
+
+        <img src="images/logo.png" alt="Triak Group" class="hero-logo">
 
         <h1>Triak<span class="gold"> Group</span></h1>
 
