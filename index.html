@@ -365,40 +365,6 @@
     }
     .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    /* Decoração lado direito da hero */
-    .hero-visual {
-      position: absolute;
-      right: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 420px;
-      height: 420px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-circle-outer {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.15);
-    }
-    .hero-circle-mid {
-      position: absolute;
-      inset: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.1);
-      background: rgba(13,32,96,0.3);
-    }
-    .hero-circle-inner {
-      position: absolute;
-      inset: 100px;
-      border-radius: 50%;
-      border: 2px solid rgba(201,168,76,0.2);
-      background: rgba(201,168,76,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-circle-inner svg { width: 80px; height: 80px; opacity: 0.4; }
 
     /* ===== STATS ===== */
     .stats {
@@ -952,7 +918,6 @@
       .stat-item:nth-child(2) { border-right: none; }
       .stat-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.08); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero-visual { width: 300px; height: 300px; }
       .services-card { padding: 44px 36px; }
     }
 
@@ -965,7 +930,6 @@
       .menu-toggle { display: flex; }
 
       /* Hero */
-      .hero-visual { display: none; }
       .hero-logo-wrap { display: none; }
       .hero .container { display: block; }
       .hero-content { max-width: 640px; }
@@ -1339,21 +1303,6 @@
       <span class="hp1"></span><span class="hp2"></span><span class="hp3"></span>
       <span class="hp4"></span><span class="hp5"></span><span class="hp6"></span>
       <span class="hp7"></span><span class="hp8"></span>
-    </div>
-    <!-- Decoração circular direita -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-circle-outer"></div>
-      <div class="hero-circle-mid"></div>
-      <div class="hero-circle-inner">
-        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="28" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <circle cx="40" cy="40" r="10" fill="#C9A84C"/>
-          <line x1="40" y1="10" x2="40" y2="20" stroke="#C9A84C" stroke-width="1.5"/>
-          <line x1="40" y1="60" x2="40" y2="70" stroke="#C9A84C" stroke-width="1.5"/>
-          <line x1="10" y1="40" x2="20" y2="40" stroke="#C9A84C" stroke-width="1.5"/>
-          <line x1="60" y1="40" x2="70" y2="40" stroke="#C9A84C" stroke-width="1.5"/>
-        </svg>
-      </div>
     </div>
 
     <div class="container">
